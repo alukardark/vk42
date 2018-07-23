@@ -1,0 +1,3 @@
+<?
+$PERM["poleznaya-informaciya"]["*"]="D";
+?>

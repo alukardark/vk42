@@ -1,0 +1,6 @@
+<?
+
+class FinishStep extends CFinishWizardStep
+{
+    
+}

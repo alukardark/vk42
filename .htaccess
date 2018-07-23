@@ -1,0 +1,384 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+
+<IfModule mod_php5.c>
+    php_flag allow_call_time_pass_reference 1
+    php_flag session.use_trans_sid off
+
+    #php_value display_errors 1
+    #php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+
+    SetEnvIf Request_URI ^.*$ VKDOMAIN=https://cs42.ru/
+    
+    #
+    # redirect from vk42.ru to new domain
+    #
+    # for local network
+    RewriteCond %{REMOTE_ADDR} ^192\.168\.1\.
+    RewriteCond %{HTTP_HOST} !cs42\.local$ [NC]
+    RewriteRule (.*) http://cs42.local/$1 [R=301,L]
+    #
+    # ATTENTION! For the global!
+    RewriteCond %{REMOTE_ADDR} !^192\.168\.1\.
+    RewriteCond %{HTTP_HOST} !cs42\.ru$ [NC]
+    RewriteRule (.*) %{ENV:VKDOMAIN}$1 [R=301,L]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/112.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}katalog/legkovye/ [R=301,L,QSD]
+    
+    RewriteCond %{REQUEST_URI} ^/section.*/401.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN} [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/402.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN} [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/119.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN} [R=301,L,QSD]
+
+
+    RewriteCond %{REQUEST_URI} ^/section.*/134.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}info/o-brende-vk/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/109.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}info/rabota-s-korparativnymi-klientami/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/147.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}info/poleznaya-informatsiya/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/386.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}info/bonusnaya-programma/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/226.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}info/bonusnaya-programma/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/378.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}info/podarochnye-karty/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/408.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}info/programma-klient/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/news.*/286.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}akcii/vremya-pokupat-letnie-shiny/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/1-286.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}akcii/vremya-pokupat-letnie-shiny/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/news.*/285.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}akcii/snizhenie-tsen-na-motornye-masla/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/1-285.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}akcii/snizhenie-tsen-na-motornye-masla/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/1-267.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}akcii/obmenyay-staryy-akkumulyator-na-novyy-so-skidkoy-20/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/1-287.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}akcii/remont-elektronnykh-sistem-avtomobilya/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/147.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/shiny/pravila-ekspluatatsii-zimnikh-shin/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/146.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/shiny/pravila-ekspluatatsii-letnikh-shin/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/379.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/raskhodnye-materialy/periodichnost-zameny-tekhnicheskikh-zhidkostey-i-raskhodnykh-materialov/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/381.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/shiny/dopustimye-sroki-ekspluatatsii-i-khraneniya-shin-garantiynyy-srok-sluzhby-shin/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/384.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/akkumulyatory/osobennosti-ekspluatatsii-akkumulyatora-v-letniy-period/ [R=301,L,QSD]
+
+
+    RewriteCond %{REQUEST_URI} ^/section.*/382.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/akkumulyatory/kak-opredelit-chto-akkumulyator-pora-menyat/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/374.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/akkumulyatory/kak-pravilno-zaryadit-avtomobilnyy-akkumulyator/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/371.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/dopolnitelno/poleznoe-video/ [R=301,L,QSD]
+
+
+    RewriteCond %{REQUEST_URI} ^/section.*/114.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/elf-formula-dlya-vashego-dvigatelya/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/114.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/eneos-motornoe-maslo-1-v-yaponii/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/114.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/idemitsu-yaponskaya-kompaniya-s-unikalnymi-tekhnologiyami/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/114.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/petro-canada-operezhaya-mirovye-standarty/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/114.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/totachi-krupnaya-mirovaya-kompaniya/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/411.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/itogi-rozygrysha-hyundai-solaris-i-eshchye-50-prizov-sredi-pokupateley-servis-tsentrov-vk/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/116.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/kanistra-dlya-tekhnicheskikh-zhidkostey-s-zapravochnym-nosikom-sapfire/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/1-250.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/servis-tsentry-vk-luchshiy-brend-kuzbassa-2014/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/2-233.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/polnostyu-sinteticheskoe-motornoe-maslo-vysshego-klassa-gm-dexos-2-longlife-5w30/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/2-232.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/zaryadnoe-ustroystvo-orion-pw-265/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/2-229.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/shell-helix-ultra-s-tekhnologiey-pureplus-/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/2-228.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/kompressor-berkut-r17/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/2-226.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/kompaniya-kik-predstavlyaet-novinki-serii-replika/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/2-221.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/vk-vnov-luchshiy-brend-kuzbassa/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/2-223.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/akkumulyatornye-batarei-varta-vybor-nomer-1-dlya-motornykh-vidov-sporta/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/3.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/shirokiy-vybor-legkosplavnykh-diskov/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/3-218.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/sokhrani-chistotu-svoego-avtomobilya/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/3-217.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/predstavlyaem-novyy-brend-v-nashey-seti-motul/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/115.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}articles/akkumulyatory/mify-iz-proshlogo-srok-khraneniya-akkumulyatorov/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/3-212.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/postuplenie-legkosplavnykh-diskov-replica-serii-concept/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/3-213.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/postuplenie-legkosplavnykh-diskov-sross-street/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/3-210.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/novinka-ot-cordiant/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/3-206.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/zaryadnye-ustroystva-bosh-pomogut-byt-vashemu-akb-v-khoroshey-zaryadnoy-forme-/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/atlas/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4-198.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/pochemu-i-free/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4-195.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/bolshoy-vybor-legkosplavnykh-kolesnykh-diskov-s-garantiynymi-parametrami-na-populyarnye-modeli-avtom/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4-196.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/dunlop-winter-maxx-wm01-i-cordiant-snow-cross/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4-193.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/zaryadnye-ustroystva-akkumulyatora-orion/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4-194.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/tsepi-protivoskolzheniya-na-kolesa-king/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4-182.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/bolshoe-postuplenie-legkosplavnykh-diskov-replica/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/4-180.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/delkor-akkumulyatory-premium-klassa/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-175.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/bolshoe-postuplenie-diskov/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-173.html
+    RewriteRule ^(.*)$ %{ENV:VKDOMAIN}novosti/letniy-sezon-2013/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-169.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/perekhod-ot-esso-k-mobil-novyy-imidzh-prezhnee-kachestvo/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-168.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/novinka-ot-zavoda-skad/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-167.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/akkumulyatory-varta-v-nalichii/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-166.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/diski-k-k-sportline-probuzhdayut-sportivnyy-interes/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-157.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/shiny-continental-po-luchshim-tsenam-tolko-u-nas/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-148.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/vk-luchshiy-brend-kuzbassa/ [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/all_news.*/5-111.html
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}novosti/otkrytie-magazina-bridgestone-pole-position/ [R=301,L,QSD]
+
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=1$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/uslugi-shinomontazha-khraneniya-shin/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=3$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-sistemy-zazhiganiya-i-elektrooborudovaniya/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=5$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/zamena-tekhnicheskikh-zhidkostey-i-filtrov/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=12$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-dvigatelya/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=13$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-dvigatelya/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=14$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-i-remont-tormoznoy-sistemy/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=19$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-akkumulyatornoy-batarei/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=30$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-sistemy-zazhiganiya-i-elektrooborudovaniya/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=32$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-i-remont-khodovoy-chasti/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=41$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/uslugi-shinomontazha-khraneniya-shin/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=42$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/uslugi-shinomontazha-khraneniya-shin/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=44$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-i-remont-khodovoy-chasti/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=45$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=57$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-sistemy-osveshcheniya/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=2$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/uslugi-shinomontazha-khraneniya-shin/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=6$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/zamena-tekhnicheskikh-zhidkostey-i-filtrov/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=7$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/zamena-tekhnicheskikh-zhidkostey-i-filtrov/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=8$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/zamena-tekhnicheskikh-zhidkostey-i-filtrov/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=9$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/zamena-tekhnicheskikh-zhidkostey-i-filtrov/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=10$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/zamena-tekhnicheskikh-zhidkostey-i-filtrov/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=11$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/zamena-tekhnicheskikh-zhidkostey-i-filtrov/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=15$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-i-remont-tormoznoy-sistemy/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=17$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-i-remont-tormoznoy-sistemy/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=18$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-i-remont-tormoznoy-sistemy/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=58$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-sistemy-osveshcheniya/ [L,R=301,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/section.*/92.html$
+    RewriteCond %{QUERY_STRING} ^s=59$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN}uslugi/obsluzhivanie-sistemy-osveshcheniya/ [L,R=301,QSD]
+
+    
+    RewriteCond %{REQUEST_URI} ^/info/poleznaya-informaciya/
+    RewriteRule ^.*$ %{ENV:VKDOMAIN} [R=301,L,QSD]
+
+    RewriteCond %{REQUEST_URI} ^/info/$
+    RewriteRule ^.*$ %{ENV:VKDOMAIN} [R=301,L,QSD]
+
+    #add trailing slash
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*[^/])$ /$1/ [L,R] [L,R=301]
+
+    #remove double slashes
+    RewriteCond %{REQUEST_URI} ^(.*)//(.*)$
+    RewriteRule . %1/%2 [R=301,L]
+
+    #cut aliasses from url
+    RewriteCond %{HTTP_HOST} ^(.*)\.cs42\.ru$ [NC]
+    RewriteRule (.*) %{ENV:VKDOMAIN}$1 [L,R=301,QSA]
+
+    #cut index.php
+    RewriteCond %{REQUEST_FILENAME} !/bitrix/
+    RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+    RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+    #cut index.html
+    RewriteCond %{REQUEST_FILENAME} !/bitrix/
+    RewriteCond %{THE_REQUEST} ^GET.*index\.html [NC]
+    RewriteRule (.*?)index\.html/*(.*) /$1$2 [R=301,NE,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+    RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+    RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule mod_dir.c>
+    DirectoryIndex index.php
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType image/jpeg "access plus 7 day"
+    ExpiresByType image/jpg "access plus 7 day"
+    ExpiresByType image/gif "access plus 7 day"
+    ExpiresByType image/png "access plus 7 day"
+    ExpiresByType text/css "access plus 7 day"
+    ExpiresByType application/javascript "access plus 7 day"
+    ExpiresByType application/json "access plus 7 day"
+</IfModule>

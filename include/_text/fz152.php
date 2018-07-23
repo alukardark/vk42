@@ -1,0 +1,1 @@
+Нажимая на кнопку, вы даете <a href="/info/personal-information/" target="_blank" title="Подробнее">согласие на обработку персональных данных</a>

@@ -1,0 +1,386 @@
+@import 'includes/base';
+
+.inner-page.faq-page{
+    min-width: 320px;
+
+    @include max-screen(md) {
+
+    }
+}
+
+.faq-top{
+    padding: 50px 0 75px;
+    background-color: rgba(233, 231, 228, 0.341);
+
+    @include max-screen(xl) {
+
+    }
+}
+
+.faq-inner{
+    width: 1100px;
+    margin: 0 auto;
+
+    @include max-screen(xl) {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.form-faq-wrap{
+
+    .form-error{
+        p {
+            margin: 0;
+        }
+
+        font.errortext{
+            padding: 0;
+            font-weight: 400;
+            padding-top: 20px;
+            font-size: 18px;
+        }
+    }
+
+    .form-result{
+        padding-top: 20px;
+    }
+}
+
+.form-description{
+    font-size: 18px;
+    color: $dark;
+    line-height: 1.667;
+}
+
+.form-faq{
+    $height-input: 48px;
+
+    position: relative;
+    padding-top: 60px;
+
+    .form-question{
+        height: $height-input;
+        width: 50%;
+
+        @include max-screen(md) {
+            width: 100%;
+        }
+
+        &-textarea{
+            height: $height-input * 3.5;
+
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 45%;
+
+            @include max-screen(md) {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 100%;
+            }
+        }
+
+        &-placeholder{
+            height: $height-input;
+            line-height: $height-input;
+            color: $dark;
+
+            &.active{
+                top: -36px;
+            }
+        }
+
+        &-fakeselect{
+            background-color: #fff;
+            border: 1px rgba(124, 124, 124, 1) solid;
+            height: $height-input;
+            cursor: pointer;
+
+            &-current{
+                height: $height-input;
+
+                span{
+                    color: $dark;
+                    height: $height-input;
+                    line-height: $height-input;
+                }
+
+                i{
+                    color: $dark;
+                    top: 54%;
+                }
+            }
+        }
+
+        input{
+            border: 1px rgba(124, 124, 124, 1) solid;
+            background-color: #fff;
+            height: $height-input;
+            line-height: $height-input;
+            color: $dark;
+        }
+
+        textarea{
+            border: 1px rgba(124, 124, 124, 1) solid;
+            height: 100%;
+            color: $dark;
+            background-color: #fff;
+        }
+    }
+
+    .form-submit{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 0;
+        width: 45%;
+
+        @include max-screen(md) {
+            position: relative;
+            bottom: auto;
+            right: auto;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        &-button{
+            @include button($preset: 'dark', $height: 58px) {
+                font-size: 20px;
+                text-transform: uppercase;
+                color: #fff;
+                width: 270px;
+            }
+        }
+
+        &-note{
+            color: $dark;
+        }
+    }
+}
+
+.faq-content{
+
+}
+
+.faq-questions{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.faq-questions-header{
+    position: relative;
+    margin-bottom: 70px;
+
+    @include max-screen(md){
+        margin-bottom: 50px;
+    }
+
+    @include max-screen(sm) {
+        margin-bottom: 0;
+        padding-bottom: 30px;
+        border-bottom: 1px rgba(0, 0, 5, 0.11) solid;
+    }
+
+    &-title{
+        font-size: 48px;
+        color: rgb(84, 84, 84);
+        text-transform: uppercase;
+        line-height: 1;
+    }
+
+
+    .form-question-fakeselect{
+        $self: &;
+
+        position: absolute;
+        @extend %cY;
+        right: 0;
+        width: 260px;
+        border: 0;
+        border-bottom: 2px $red solid;
+
+        @include max-screen(sm) {
+            position: relative;
+            @include transform(none);
+            top: auto;
+            right: auto;
+            margin-top: 30px;
+        }
+
+        &-current{
+            cursor: pointer;
+
+            span{
+                padding-left: 10px;
+                color: $red;
+            }
+
+            i{
+                color: $red;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.faq-questions-item{
+    padding-top: 50px;
+    padding-bottom: 70px;
+    border-bottom: 1px rgba(0, 0, 5, 0.11) solid;
+
+    @include max-screen(md){
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    @include max-screen(sm){
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    &-header{
+
+        &-name{
+            font-size: 18px;
+            color: #000;
+            font-weight: 700;
+            line-height: 1;
+
+            @include max-screen(md){
+                font-size: 16px;
+            }
+        }
+
+        i{
+            font-size: 8px;
+            color: #000;
+            margin: 0 6px;
+
+            @include max-screen(sm){
+                display: none;
+            }
+        }
+
+        &-date{
+            font-size: 18px;
+            color: $red;
+            font-weight: 700;
+            line-height: 1;
+
+            @include max-screen(md){
+                font-size: 16px;
+            }
+
+            @include max-screen(sm){
+                display: block;
+                padding-top: 10px;
+            }
+        }
+    }
+
+    &-question{
+        padding-top: 25px;
+        font-size: 16px;
+        font-weight: 300;
+        color: rgb(83, 83, 83);
+        line-height: 1.873;
+        font-family: inherit;
+        white-space: pre-wrap;
+
+        @include max-screen(sm){
+            line-height: 1.25;
+        }
+
+        &-button{
+            display: inline;
+
+            button{
+                margin: 0;
+                padding: 0;
+                display: inline;
+                color: $red;
+                text-decoration: underline;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 1.873;
+
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &-more{
+            display: none;
+
+            &.opened{
+                display: inline !important;
+            }
+        }
+    }
+
+    &-answer{
+        padding-top: 70px;
+
+        @include max-screen(md){
+            padding-top: 50px;
+        }
+
+        @include max-screen(sm){
+            padding-top: 30px;
+        }
+
+        i{
+            display: block;
+            float: left;
+            @include get-sprite(faq);
+
+            @include max-screen(sm){
+                margin-right: 20px;
+            }
+        }
+
+        pre{
+            display: block;
+            margin-left: 100px;
+            font-size: 16px;
+            color: rgb(0, 0, 0);
+            line-height: 1.873;
+            font-family: inherit;
+            white-space: pre-wrap;
+
+            @include max-screen(sm){
+                line-height: 1.25;
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.faq-questions-more{
+    margin-top: 20px;
+    @extend %button-more;
+
+    @include max-screen(xl) {
+        min-width: inherit;
+    }
+
+    @include max-screen(sm) {
+        min-width: 100%;
+    }
+}
+
+.faq-questions-pagination {
+    @extend %pager;
+
+    text-align: center;
+    margin-top: 20px;
+
+    > ul{
+        display: inline-block;
+    }
+}

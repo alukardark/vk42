@@ -1,0 +1,70 @@
+$ionicons-font-path: "/local/dev/bower_components/ionicons/fonts" !default;
+@import '../../bower_components/ionicons/scss/ionicons';
+//@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic';
+
+$font-file-weights: (
+//ultralight: 100,
+thin: 200,
+light: 300,
+roman: 400,
+medium: 600,
+bold:700,
+heavy:800,
+//black:900
+);
+
+@each $code, $width in $font-file-weights {
+    //$font-file-name: "HelveticaNeue/HelveticaNeue-#{$width}-normal";
+    $font-file-name: "HelveticaNeueCyr/helveticaneuecyr-#{$code}-webfont";
+
+    @include font-face(
+    'HelveticaNeueCyr',
+    font-files(
+    "#{$font-file-name}.woff2",
+    "#{$font-file-name}.woff",
+    "#{$font-file-name}.ttf"
+    //"#{$font-file-name}.svg"
+    ),
+    "#{$font-file-name}.eot",
+    $width,
+    normal
+    );
+}
+
+/*
+В шрифте содержатся знаки рубля для самых распространенных шрифтов. 
+Буквы соответствуют шрифтам, в стиле которых нарисованы знаки рубля. 
+Так, чтобы набрать знак обычным начертанием Тахомы, нужно в этом спецшрифте напечатать букву i.
+
+a - Arial Regular
+b - Arial Italic
+c - Arial Bold
+d - Arial Bold Italic
+e - Georgia Regular
+f - Georgia Italic
+g - Georgia Bold
+h -Georgia Bold Italic
+i - Tahoma Regular
+j- Tahoma Bold
+k - Times Regular
+l - Times Italic
+m - Times Bold
+n - Times Bold Italic
+o - Lucida Regular
+p - Verdana Regular
+q - Verdana Italic
+r - Verdana Bold
+s - Verdana Bold Italic 
+*/
+@include font-face(
+    'rouble',
+    font-files(
+        "Rouble/rouble.woff2",
+        "Rouble/rouble.woff",
+        "Rouble/rouble.ttf",
+        "Rouble/rouble.svg"
+    ),
+    "Rouble/rouble.eot",
+    400,
+    normal 
+);

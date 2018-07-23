@@ -1,0 +1,204 @@
+@mixin button (
+$height: 54px,
+$paddings: 26px,
+$min-width: 0,
+//$font-size: 12px,
+$background: transparent,
+$background-hover: transparent,
+$color: #000,
+$color-hover: $red,
+$border-width: 1px,
+$border-color: #000,
+$border-radius: 54px,
+$border-color-hover: $red,
+$icon: false,
+$icon-pos: 'left',
+$icon-offset: 10px,
+$preset: deafult
+) {
+    @extend %trallf;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    outline: 0;
+    text-decoration: none;
+
+    min-width: $min-width;
+    padding: 0 $paddings;
+    text-align: center;
+    //font-size: $font-size;
+
+    height: $height;
+    line-height: $height;
+
+    @if ($border-radius > 0) {
+        @include border-radius($border-radius);
+    }
+
+    @if ($border-width > 0) {
+        border-width: $border-width;
+        border-style: solid;
+    }
+
+    @if ($preset == deafult) {
+        color: $color;
+        background: $background;
+        border-color: $border-color;
+
+        &:hover{
+            color: $color-hover;
+            background: $background-hover;
+            border-color: $border-color-hover;
+        }
+    }
+    @elseif ($preset == 'dark-red') {
+        color: $white-dark;
+        background: $red-dark;
+        border-color: $red-dark;
+
+        &:hover{
+            color: #fff;
+            background: $red;
+            border-color: $red;
+        }
+    }
+    @elseif ($preset == 'red') {
+        color: #fff;
+        background: $red;
+        border-color: $red;
+
+        &:hover{
+            background: $red-dark;
+            border-color: $red-dark;
+        }
+    }
+    @elseif ($preset == 'border-red') {
+        color: #fff;
+        background: transparent;
+        border-color: $red;
+
+        &:hover{
+            color: $red;
+            background: transparent;
+            border-color: $red;
+        }
+    }
+    @elseif ($preset == 'gray') {
+        color: #494949;
+        background: #f2f2f2;
+        border-color: #f2f2f2;
+
+        &:hover{
+            color: #f2f2f2;
+            background: #494949;
+            border-color: #494949;
+        }
+    }
+    @elseif ($preset == 'dark') {
+        $preset-color: rgb(59, 59, 59);
+        $preset-color-hover: rgb(99, 99, 99);
+        color: #fff;
+        background: $preset-color;
+        border-color: $preset-color;
+
+        &:hover{
+            color: #fff;
+            background: $preset-color-hover;
+            border-color: $preset-color-hover;
+        }
+    }
+    @elseif ($preset == 'border-black') {
+        $preset-color: rgb(66, 66, 66);
+        $preset-color-hover: rgb(31, 31, 31);
+        color: $preset-color;
+        background: transparent;
+        border-color: $preset-color;
+
+        &:hover{
+            color: $red;
+            background: transparent;
+            border-color: $red;
+        }
+    }
+
+
+    @if ($icon != false) {
+        i {
+            @extend %trallf;
+            display: inline-block;
+            vertical-align: middle;
+            @extend %sprite;
+            @extend %sprite-#{$icon};
+
+            @if ($icon-pos == 'left') {
+                margin-right: $icon-offset;
+            }
+            @else {
+                margin-left: $icon-offset;
+            }
+        }
+    }
+
+    &.disabled{
+        color: #6c6c6d;
+        background: #999999;
+        border-color: #999999;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+    @content;
+}
+
+%button-city{
+    @include button($height: 48px, $border-radius: 0) {
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        background: transparent;
+        border: 2px solid transparent;
+        color: inherit !important;
+        line-height: normal;
+
+        &:hover > span, &.active > span{
+            border-color: transparent;
+        }
+
+        &:not(.active):hover{
+            border-color: transparent;
+            background: #F1F1F1;
+        }
+
+        &.active{
+            border-color: $red;
+            background: transparent;
+        }
+
+        display: inline-block;
+        vertical-align: middle;
+
+        &:not(:last-child){
+            margin-right: 30px;
+        }
+
+        @include max-screen(xxl){
+            font-size: 18px;
+            letter-spacing: 0.02em;
+
+            &:not(:last-child){
+                margin-right: 10px;
+            }
+        }
+
+        @include max-screen(lg){
+            font-size: 16px;
+        }
+
+        > span{
+            display: inline-block;
+            line-height: 30px;
+            border-bottom: 1px dashed;
+        }
+    }
+}

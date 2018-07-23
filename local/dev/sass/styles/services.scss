@@ -1,0 +1,1521 @@
+@import 'includes/base';
+@import 'map';
+
+.services-page.inner-page {
+
+    .header-inner-title{
+        margin-top: 40px;
+    }
+
+    .header-inner {
+        padding-bottom: 40px;
+    }
+}
+
+.inner-page.uslugi-page{
+    min-width: 320px;
+}
+
+$width-services: 1100px;
+
+.services{
+
+    &-wrap{
+
+    }
+
+    #map{
+        width: 100%;
+        height: 666px;
+        background: #FAFAFA;
+    }
+}
+
+.services-buttons{
+    width: $width-services;
+    margin: 0 auto;
+
+    @include max-screen(xl) {
+        width: 100%;
+        max-width: 992px;
+        min-width: 320px;
+    }
+
+    @include max-screen(md) {
+        padding-left: 20px;
+    }
+
+    button{
+        @extend %button-city;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+.services-phone-note{
+    background-color: rgba(232, 232, 232, 0.329);
+    padding: 20px 0;
+
+    &-inner{
+        width: $width-services;
+        margin: 0 auto;
+        padding-left: 168px;
+
+        @include max-screen(xl) {
+            width: 100%;
+            max-width: 992px;
+            min-width: 320px;
+        }
+
+        @include max-screen(md) {
+            padding-left: 20px;
+        }
+
+        .phone-note{
+
+            .red{
+                color: rgb(35, 35, 35) !important;
+            }
+        }
+
+    }
+}
+
+.services-row{
+    height: 0;
+    @include transition(all .25s ease-out);
+    @extend %opacity_0;
+
+    &.active{
+        @include transform(translateZ(0));
+        @extend %opacity_1;
+        height: 220px;
+
+        @include max-screen(md) {
+            height: 320px;
+            padding-bottom: 100px;
+
+            .services-row-wrap-last{
+                height: 100px;
+            }
+        }
+
+        @include max-screen(sm) {
+            height: 470px;
+            padding-bottom: 230px;
+            padding-top: 20px;
+
+            .services-row-wrap-first{
+                height: 130px;
+            }
+        }
+    }
+
+    &.active:nth-child(even){
+        background-color: rgba(232, 232, 232, 0.329);
+    }
+
+    &-content{
+        height: 100%;
+        width: $width-services;
+        margin: 0 auto;
+
+        @include max-screen(xl) {
+            width: 100%;
+            max-width: 992px;
+            min-width: 320px;
+            padding: 0 20px;
+        }
+    }
+
+    &-wrap{
+        position: relative;
+        height: 100%;
+
+        &-content{
+            position: relative;
+            height: 100%;
+
+            @include max-screen(lg) {
+                height: auto;
+                position: absolute;
+                @include centerY;
+            }
+
+            @include max-screen(md) {
+                width: 100%;
+            }
+        }
+
+        &-center{
+            @include max-screen(lg) {
+                padding-left: 25px;
+            }
+
+            @include max-screen(sm) {
+                padding-left: 0;
+            }
+        }
+
+        &-last{
+            @include max-screen(md) {
+                padding-left: 25px;
+            }
+
+            @include max-screen(sm) {
+                padding-left: 0;
+            }
+        }
+    }
+
+    &-cell{
+        position: relative;
+        height: 100%;
+
+        &-content{
+            position: absolute;
+            @extend %cXY;
+            display: block;
+
+            &-phone{
+                white-space: nowrap;
+
+                i{
+                    position: relative !important;
+                    height: auto !important;
+                    top: auto !important;
+                    @include transform(none);
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 6px;
+                }
+
+                span{
+                    left: auto !important;
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    &.phdescr{
+                        display: block;
+                        left: 30px !important;
+                        font-weight: 300;
+                        font-size: 14px;
+                        opacity: 0.7;
+                        top: -6px;
+                    }
+                }
+
+                &:not(:last-child){
+                    margin-bottom: 8px;
+                }
+            }
+
+            @include max-screen(lg) {
+                position: relative;
+                @include cancelCenter;
+                padding: 15px 0;
+            }
+        }
+    }
+
+    &-image{
+
+        .services-row-cell-content{
+            width: 120px;
+            height: 120px;
+            @include border-radius(120px);
+            overflow: hidden;
+
+            @include max-screen(lg) {
+                padding: 0;
+            }
+        }
+    }
+
+    &-title{
+
+        .services-row-cell-content{
+            width: 75%;
+        }
+
+        span{
+            display: block;
+            font-size: 14px;
+            color: $dark;
+            line-height: 1.5;
+
+            @include max-screen(lg) {
+                //display: inline-block;
+            }
+        }
+
+        span:first-child{
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+
+        span:last-child{
+
+        }
+    }
+
+    &-phone, &-schedule, &-maplink{
+        .services-row-cell-content{
+            width: 75%;
+        }
+
+        i{
+            position: absolute;
+            @extend %cY;
+            left: 0;
+            height: 32px;
+            color: $red;
+            font-size: 28px;
+        }
+
+        span, button{
+            position: relative;
+            left: 30px;
+            color: $dark;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+    }
+
+    &-phone {
+
+    }
+
+    &-schedule{
+
+        span{
+            left: 33px;
+            font-weight: 400;
+        }
+    }
+
+    &-maplink{
+        white-space: nowrap;
+
+        button{
+            left: 25px;
+            cursor: pointer;
+
+            &:after{
+                position: absolute;
+                content: '';
+                bottom: -2px;
+                left: 1px;
+                right: 0px;
+                height: 2px;
+                border-bottom: 2px dashed $red;
+                @extend %trall;
+            }
+
+            &:hover:after{
+                border-color: transparent;
+            }
+        }
+    }
+
+    &-orderbutton{
+        display: none;
+
+        button{
+            @include button($preset:'red', $height: 36px, $paddings: 24px){
+                border: 0;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.uslugi{
+    width: 100%;
+    padding: 0px 0px 0px;
+    background-color: rgba(238, 238, 238, 0.769);
+
+    &-inner{
+        position: relative;
+        width: 1350px;
+        margin: 0 auto;
+        @extend %trall;
+
+        @include max-screen(xxl) {
+            width: 1100px;
+        }
+
+        @include max-screen(xl) {
+            width: 100%;
+        }
+    }
+}
+
+.uslugi-cards{
+    @include max-screen(xl) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    @include max-screen(md) {
+        padding-top: 40px;
+    }
+
+    @include max-screen(sm) {
+        padding-top: 100px;
+    }
+}
+
+.uslugi-cards-wrap{
+    background-color: #fff;
+    padding-bottom: 80px;
+
+    .uslugi-inner{
+        width: 992px;
+
+        @include max-screen(xl) {
+            width: 100%;
+        }
+
+        @include max-screen(lg) {
+            width: 100%;
+        }
+    }
+
+    .uslugi-stores{
+        margin-top: 50px;
+    }
+
+    .uslugi-stores-fakeselect{
+        width: 100%;
+        padding-right: 20px;
+        padding-top: 0;
+        margin-bottom: 100px;
+
+        @include max-screen(xl) {
+            padding-left: 20px;
+        }
+
+        @include max-screen(md) {
+            padding-left: 0;
+        }
+
+        @include max-screen(sm) {
+            padding-left: 20px;
+        }
+    }
+
+    .uslugi-stores-fakeselect-button span{
+        font-size: 16px;
+    }
+
+    .uslugi-stores-fakeselect-button:nth-child(1){
+        padding-left: 0;
+    }
+}
+
+.uslugi-backlink.backlink{
+    a{
+        background-color: #fff;
+
+        &:hover{
+            background-color: rgba(243,243,243,0.688);
+        }
+    }
+}
+
+#uslugi-wait{
+    $top-offset: 300px;
+
+    position: absolute;
+    display: none;
+    @extend %pseudo;
+    z-index: 9999;
+    background-color: rgba(239, 239, 239, 0.6);
+    @extend %trallf;
+
+    figure{
+        @include spinner-ring($size: 80px, $color: #C8C8C8, $speed: 1s, $position: 'cX') {
+            top: $top-offset;
+        };
+    }
+
+    &.loading{
+        figure{
+            display: block;
+        }
+    }
+
+    &:before{
+        position: absolute;
+        content: '';
+        @extend %cX;
+        top: $top-offset;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.uslugi-stores{
+
+
+    &-fakeselect{
+        position: relative;
+        width: 1100px;
+        margin: 0 auto;
+        padding: 50px 0 70px;
+
+        @include max-screen(xl) {
+            width: 100%;
+        }
+
+        @include max-screen(lg) {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+        }
+
+        @include max-screen(md) {
+            max-width: 480px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+        }
+
+        &-button{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            height: 40px;
+            cursor: pointer;
+
+            &:nth-child(1){
+                text-align: left;
+                padding-left: 25px;
+                border-right: 1px rgba(0, 0, 0, 0.25) solid;
+
+                @include max-screen(lg){
+                    border-right: 0;
+                    padding-left: 0;
+                }
+            }
+
+            &:nth-child(2){
+                text-align: right;
+                padding-right: 25px;
+
+                @include max-screen(lg){
+                    padding-right: 0;
+                    text-align: left;
+                }
+            }
+
+            i{
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                height: 24px;
+                width: 24px;
+                @include border-radius(18px);
+                border: 1px rgba(0, 0, 0, 1) solid;
+                @extend %trall;
+
+                @include max-screen(sm){
+                    height: 20px;
+                    width: 20px;
+                }
+
+                &:after{
+                    position: absolute;
+                    content: '';
+                    display: block;
+                    height: 50%;
+                    width: 50%;
+                    background-color: $red;
+                    @include border-radius(100%);
+                    @extend %trall;
+                    @extend %cXY;
+                    @include opacity(0);
+                }
+            }
+
+            span{
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 16px;
+                font-size: 18px;
+                color: #000;
+                line-height: 1;
+
+                @include max-screen(sm){
+                    margin-left: 10px;
+                    font-size: 16px;
+                }
+            }
+
+            &:hover{
+                i{
+                    &:after{
+                        @include opacity(0.5);
+                    }
+                }
+            }
+
+            &.selected{
+                i{
+                    &:after{
+                        @include opacity(1);
+                    }
+                }
+            }
+        }
+
+        &-current{
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 2px $red solid;
+
+            @include max-screen(sm){
+                margin-top: 15px;
+            }
+
+            span{
+                display: block;
+                padding-left: 8px;
+                color: $red;
+                cursor: pointer;
+            }
+
+            i{
+                position: absolute;
+                @extend %cY;
+                right: 8px;
+                margin-right: 8px;
+                color: $red;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+
+        &-list{
+            z-index: -1;
+            display: block;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: -2px;
+            right: -10px;
+            width: 300px;
+            background-color: #fff;
+            @extend %trallf;
+            max-height: 400px;
+
+            @extend %opacity_0;
+            @include box-shadow(0 2px 5px rgba(0, 0, 0, .25));
+            @include transform(translate3d(0, -30%, 0));
+
+            li{
+                @extend %trallf;
+                font-size: 15px;
+                font-weight: 300;
+                line-height: 1.25;
+                padding: 10px 13px;
+                display: none;
+                cursor: pointer;
+
+                &.li-title{
+                    pointer-events: none;
+                    height: 40px;
+                    line-height: 40px;
+                    font-weight: 600;
+                    padding: 0px 18px;
+                    cursor: default;
+                    color: #fff;
+                    background-color: rgba(#000, 0.85);
+                }
+
+                &:hover{
+                    background-color: rgba(#000, 0.1);
+                }
+            }
+
+            &.opened{
+                @extend %opacity_1;
+                @include transform(translateZ(0));
+                z-index: 2;
+
+                li{
+                    display: block;
+
+                    &.selected{
+                        font-weight: 600;
+                        background-color: rgba(#000, 0.05);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.uslugi-stores--list{
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: calc(100% - 0px);
+
+    .uslugi-price{
+        @include display-flex(flex);
+        @include justify-content(flex-end);
+        @include align-items(center);
+        height: 80px;
+        width: calc(100% - 20px);
+
+        &__content{
+
+        }
+
+        i{
+            font-style: normal;
+            @include display-flex(inline-flex);
+            @include align-items(center);
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0 4px;
+            border: 2px $red solid;
+            @include border-radius(6px);
+            color: $red;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        a{
+            text-decoration: none;
+            @include display-flex(inline-flex);
+            @include align-items(center);
+            border-bottom: 1px dashed $red;
+            @extend %trall;
+            
+            &:hover{
+                border-color: rgba($red, 0);
+            }
+        }
+
+    }
+
+    .uslugi-stores-fakeselect{
+        width: calc(100% - 20px);
+        margin: 0 auto;
+        padding: 20px 30px 20px;
+        background: #fff;
+    }
+}
+
+.uslugi-stores-info{
+    $color-border: rgba(232, 232, 232, 0.522);
+
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 66.666%;
+    height: 100px;
+    border: 3px $color-border solid;
+
+    @include max-screen(xl) {
+        right: 20px;
+    }
+
+    @include max-screen(lg) {
+        top: 110px; //+40
+    }
+
+    @include max-screen(md) {
+        top: 150px; //+40
+        width: 100%;
+    }
+
+    @include max-screen(sm) {
+        height: auto;
+        top: 170px;
+        left: 20px;
+        padding: 20px;
+        width: auto;
+    }
+
+    &:before{
+        content: "";
+        position: absolute;
+        border-style: solid;
+        border-color: $color-border transparent;
+        display: block;
+        width: 0;
+        top: -20px;
+        right: 40px;
+        border-width: 0 20px 20px;
+    }
+
+    &:after{
+        content: "";
+        position: absolute;
+        border-style: solid;
+        border-color: #fff transparent;
+        display: block;
+        width: 0;
+        top: -16px;
+        right: 40px;
+        border-width: 0 20px 20px;
+    }
+
+    &-content{
+        position: absolute;
+        width: 90%;
+        height: 40px;
+        @extend %cXY;
+
+        @include max-screen(sm) {
+            top: 0;
+            left: 0;
+            @include transform(none);
+            position: relative;
+        }
+
+        &-block{
+            position: relative;
+            height: 100%;
+
+            i{
+                position: absolute;
+                @extend %cY;
+                left: 0;
+                color: $red;
+                font-size: 28px;
+            }
+
+            span{
+                position: relative;
+                line-height: 1.15;
+                float: left;
+                margin-left: 16%;
+                padding-right: 10px;
+                display: block;
+                @extend %cY;
+
+            }
+
+            button{
+                position: relative;
+                float: left;
+                margin-left: 20%;
+                color: #141414;
+                font-weight: 700;
+                line-height: 1;
+                cursor: pointer;
+                @extend %cY;
+
+                &:after{
+                    position: absolute;
+                    content: '';
+                    bottom: -2px;
+                    left: 1px;
+                    right: 0px;
+                    height: 2px;
+                    border-bottom: 2px dashed $red;
+                    @extend %trall;
+                }
+
+                &:hover:after{
+                    border-bottom-color: transparent;
+                }
+            }
+
+            @include max-screen(sm) {
+                span, button {
+                    margin-left: 40px !important;
+                }
+            }
+        }
+
+        &-shedule{
+            span{
+                font-weight: 700;
+            }
+        }
+
+        &-phone{
+            i{
+                top: 54%;
+            }
+
+            span{
+                margin-left: 13%;
+                font-weight: 700;
+            }
+
+        }
+
+        &-maplink{
+
+        }
+    }
+}
+
+.uslugi-list{
+    //padding-bottom: 120px;
+    @include column-count(2);
+
+    @include max-screen(xl) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    @include max-screen(md) {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 60px;
+    }
+
+    @include max-screen(md) {
+        @include column-count(1);
+    }
+
+    &-item{
+        $self: &;
+        $size: 140px;
+        $size-xl: 110px;
+        $size-lg: 90px;
+
+        position: relative;
+        min-height: $size;
+        padding: 6px 9px;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        @extend %trall;
+
+        @include max-screen(xl) {
+            min-height: $size-xl;
+            padding: 6px 3px;
+        }
+
+        @include max-screen(lg) {
+            min-height: $size-lg;
+            padding: 6px 0px;
+        }
+
+        &-content{
+            position: relative;
+            display: block;
+            text-decoration: none;
+            background-color: #fff;
+            padding-right: $size;
+            //@include box-shadow(6px 10px 24px 0px rgba(0, 0, 0, 0));
+            @extend %trall;
+
+            @include max-screen(xl) {
+                padding-right: $size-xl;
+                padding-top: 10px;
+            }
+
+            @include max-screen(lg) {
+                padding-right: 20px;
+                padding-top: 30px;
+            }
+
+            &:after{
+                position: absolute;
+                content: '';
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background-color: $red;
+                @include opacity(0);
+                @extend %trall;
+            }
+
+            &.inactive{
+                @include opacity(0.33);
+            }
+        }
+
+        &-icon{
+            position: relative;
+            display: block;
+            float: left;
+            height: $size;
+            width: $size;
+            @extend %trall;
+
+            @include max-screen(xl) {
+                height: $size-xl;
+                width: $size-xl;
+            }
+
+            @include max-screen(lg) {
+                height: $size-lg;
+                width: $size-lg;
+            }
+
+            img{
+                display: block;
+                position: absolute;
+                @extend %cXY;
+
+                @include max-screen(lg) {
+                    position: relative;
+                    margin: auto;
+                    top: 22px;
+                    left: auto;
+                    @include transform(none);
+                }
+            }
+        }
+
+        &-title{
+            position: relative;
+            display: block;
+            max-width: 100%;
+            margin-left: $size;
+            height: $size;
+            @extend %trall;
+
+            @include max-screen(xl) {
+                margin-left: $size-xl;
+                height: $size-xl;
+            }
+
+            @include max-screen(lg) {
+                margin-left: $size-lg;
+                height: $size-lg;
+            }
+
+            span{
+                display: block;
+                position: absolute;
+                left: 0;
+                @extend %cY;
+                line-height: 1.25;
+                letter-spacing: 0.02em;
+                font-size: 18px;
+                color: rgb(0, 0, 0);
+                text-transform: uppercase;
+                text-decoration: underline;
+                @extend %trall;
+
+                @include max-screen(lg) {
+                    font-size: 16px;
+                    top: 30px;
+                    left: auto;
+                    @include transform(none);
+                }
+            }
+        }
+
+        &-elements{
+            position: relative;
+            display: block;
+            list-style-position: inside;
+            width: 100%;
+            margin: 0;
+            padding-bottom: 50px;
+            text-indent: -30px;
+            padding-left: $size + 30px;
+            @extend %trall;
+
+            @include max-screen(xl) {
+                padding-left: $size-xl + 30px;
+            }
+
+            @include max-screen(lg) {
+                padding-left: $size-lg;
+            }
+
+            li{
+                color: rgb(0, 0, 0);
+                line-height: 1.375;
+                text-decoration: none;
+                letter-spacing: 0.02em;
+                margin: 10px 0;
+                @extend %trall;
+
+                &.inactive {
+                    color: rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+
+        &-next{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: $size;
+            height: $size;
+            @include opacity(0);
+            @extend %trall;
+
+            @include max-screen(xl) {
+                width: $size-xl;
+                height: $size-xl;
+            }
+
+            @include max-screen(lg) {
+                display: none;
+            }
+
+            &-icon{
+                display: block;
+                position: absolute;
+                @extend %cXY;
+                width: 40px;
+                height: 40px;
+                background-color: $red;
+                @include border-radius(40px);
+                overflow: hidden;
+            }
+
+            i{
+                display: block;
+                position: relative;
+                top: 9px;
+                left: 18px;
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        @include min-screen(lg) {
+            &:hover{
+                #{$self}-content{
+                    //@include box-shadow(5px 10px 24px -4px rgba(0,0,0,0.4));
+
+                    &.inactive{
+                        @include opacity(0.5);
+                    }
+
+                    &:after{
+                        @include opacity(1);
+                    }
+                }
+
+                #{$self}-elements{
+
+                    li{
+                        color: rgb(0, 0, 0);
+
+                        &.inactive{
+                            @include opacity(0.5);
+                        }
+                    }
+                }
+
+                #{$self}-title{
+                    span{
+                        color: $red;
+                        text-decoration: none;
+                    }
+                }
+
+                #{$self}-next{
+                    @include opacity(1);
+                }
+            }
+        }
+    }
+}
+
+.uslugi-description{
+    $self: &;
+    $width-descr: 450px;
+
+    position: relative;
+    min-height: 400px;
+    margin-top: 65px;
+
+    &-title{
+        display: block;
+        width: $width-descr;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 1.25;
+        margin: 0;
+        color: $dark;
+        padding: 30px 0;
+        border-bottom: 1px rgba(56, 56, 56, 0.149) solid;
+    }
+
+    &-text{
+        display: block;
+        width: $width-descr;
+        color: rgb(55, 55, 55);
+        line-height: 1.625;
+        padding: 45px 0 0;
+    }
+
+    &-picture{
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        width: 350px;
+        height: 400px;
+        overflow: hidden;
+        max-height: 100%;
+
+        img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @include max-screen(xl) {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        #{$self}-title{
+            width: 60%;
+        }
+
+        #{$self}-text{
+            width: 60%;
+        }
+
+        #{$self}-picture{
+            width: 35%;
+            height: auto;
+            right: 20px;
+        }
+    }
+
+    @include max-screen(lg) {
+        min-height: auto;
+
+        #{$self}-title{
+            font-size: 32px;
+        }
+
+        #{$self}-text{
+            line-height: 1.5;
+        }
+
+        #{$self}-picture{
+
+        }
+    }
+
+    @include max-screen(md) {
+        #{$self}-title{
+            padding: 0 0 20px;
+            font-size: 26px;
+        }
+
+        #{$self}-text{
+            line-height: 1.25;
+            padding: 20px 0 0;
+        }
+
+        #{$self}-picture{
+
+        }
+    }
+
+    @include max-screen(sm) {
+        margin-top: 40px;
+
+        #{$self}-title{
+            width: 100%;
+            font-size: 20px;
+        }
+
+        #{$self}-text{
+            width: 100%;
+        }
+
+        #{$self}-picture{
+            display: none;
+        }
+    }
+}
+
+.uslugi-card{
+    $width-arrow: 60px;
+    $width-title: 500px;
+    $width-summ: $width-arrow + $width-title;
+
+    background-color: rgba(243, 243, 243, 0.788);
+    padding: 50px 0 40px;
+    margin-bottom: 7px;
+    padding-right: 60px;
+    overflow: hidden;
+    @extend %trall;
+
+    @include max-screen(xl) {
+        padding: 35px 0 30px;
+    }
+
+    @include max-screen(lg) {
+        padding: 20px 0 20px;
+    }
+
+    @include max-screen(md) {
+        padding: 10px 0 15px;
+    }
+
+    @include max-screen(sm){
+        padding: 0px 0 10px;
+        padding-right: 0px;
+    }
+
+    &.inactive{
+        @include opacity(0.4);
+        pointer-events: none;
+
+        *{
+            pointer-events: none;
+        }
+    }
+
+    &-content{
+
+    }
+
+    &-arrow{
+        position: relative;
+        top: 5px;
+        display: block;
+        float: left;
+        width: $width-arrow;
+        height: 34px;
+        @extend %trall;
+        cursor: pointer;
+
+        @include max-screen(md) {
+            top: 30px;
+            left: -3px;
+        }
+
+        @include max-screen(sm) {
+            top: 30px;
+        }
+
+        i{
+            position: absolute;
+            display: block;
+            @extend %cXY;
+            color: #000;
+            font-size: 24px;
+            @extend %trall;
+        }
+
+        &.opened{
+            @include transform(rotate(180deg));
+            top: 2px;
+
+            @include max-screen(md) {
+                top: 27px;
+            }
+
+            @include max-screen(sm) {
+                top: 27px;
+            }
+        }
+
+        &.opened, &:hover{
+            i{
+                color: $red;
+            }
+        }
+    }
+
+    &-title{
+        position: relative;
+        float: left;
+        padding-left: 18px;
+        padding-top: 10px;
+        width: $width-title;
+        font-size: 18px;
+        font-weight: 300;
+        color: #000;
+        text-transform: uppercase;
+        line-height: 1.25;
+        cursor: pointer;
+        @extend %trall;
+
+        @include max-screen(md) {
+            float: none;
+            width: 100%;
+
+            > span{
+                padding-left: 60px;
+                width: 100%;
+                display: inline-block;
+            }
+        }
+
+        @include max-screen(sm) {
+            font-size: 16px;
+
+            > span{
+                padding-left: 40px;
+            }
+        }
+
+        @include min-screen(lg) {
+            &:hover{
+                color: $red;
+            }
+        }
+
+
+        &.opened{
+            color: $red;
+        }
+
+        &:before{
+            position: absolute;
+            display: block;
+            content: '';
+            top: 5px;
+            height: 30px;
+            left: 0;
+            width: 1px;
+            background-color: rgb(209, 209, 209);
+
+            @include max-screen(md) {
+                left: 50px;
+                top: -70px;
+                height: 2999px;
+            }
+        }
+    }
+
+    &-description{
+        position: relative;
+        margin-top: 30px;
+        padding-left: 60px;
+        padding-right: 20px;
+        padding-top: 30px;
+        padding-bottom: 0;
+        display: none;
+
+        &:before{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: -80px;
+            height: 1px;
+            background-color: rgb(209, 209, 209);
+
+            @include max-screen(md) {
+                left: 80px;
+                right: 0px;
+            }
+
+            @include max-screen(sm){
+                left: 60px;
+                right: 20px;
+            }
+        }
+
+        &-content{
+            padding-left: 10px;
+
+            @include max-screen(md) {
+                padding-left: 70px;
+            }
+
+            @include max-screen(sm) {
+                padding-left: 20px;
+                padding-right: 10px;
+            }
+        }
+    }
+
+    &-priceblock{
+        $height-price: 48px;
+
+        float: right;
+        width: calc(100% - #{$width-summ});
+
+        @include max-screen(xl) {
+            padding-right: 20px;
+        }
+
+        @include max-screen(md) {
+            float: none;
+            width: 100%;
+            padding-right: 0px;
+        }
+
+        &-price{
+            float: left;
+            height: $height-price;
+            line-height: $height-price;
+            text-align: right;
+            white-space: nowrap;
+
+            @include max-screen(md) {
+                text-align: left;
+                padding-left: 80px;
+            }
+
+            @include max-screen(sm) {
+                padding-left: 60px;
+            }
+
+            &-exact{
+                color: rgb(5, 5, 5);
+                line-height: 1;
+                font-size: 19px;
+                font-weight: 800;
+
+                @include max-screen(lg) {
+                    font-size: 17px;
+                }
+
+                @include max-screen(sm) {
+                    font-size: 15px;
+                }
+            }
+
+            &-value{
+                color: rgb(5, 5, 5);
+                line-height: 1;
+                font-size: 29px;
+                font-weight: 800;
+                height: $height-price;
+                line-height: $height-price;
+
+                @include max-screen(lg) {
+                    font-size: 24px;
+                }
+
+                @include max-screen(sm) {
+                    font-size: 18px;
+                }
+
+                .rouble:after{
+                    content: 'c';
+                }
+            }
+        }
+
+        &-button{
+            float: right;
+
+            button{
+                @include button($preset: 'red', $height: $height-price) {
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    width: 174px;
+                    margin-left: auto;
+                }
+            }
+
+        }
+    }
+}

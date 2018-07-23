@@ -1,0 +1,52 @@
+.svg-icon{
+    width: 25px;
+    height: 25px;
+    @extend %trall;
+
+    &:hover{
+        .fill-white, .stroke-white{
+            fill: #fff;
+        }
+    }
+}
+
+
+
+$svg-white: rgb(151, 151, 151);
+
+.svg-disk{
+    stroke-width: 2px;
+    stroke: rgba(255, 255, 255, 0.75);
+    fill: none;
+    @extend %trall;
+}
+
+.fill-white{
+    fill: $svg-white;
+    @extend %trall;
+}
+
+.fill-black{
+    fill: #000;
+    @extend %trall;
+}
+
+.fill-none{
+    fill: none;
+    @extend %trall;
+}
+
+.stroke-white{
+    stroke: $svg-white;
+    @extend %trall;
+}
+
+.stroke-black{
+    stroke: #000;
+    @extend %trall;
+}
+
+.stroke-none{
+    stroke: none;
+    @extend %trall;
+}

@@ -1,0 +1,110 @@
+.checkmark {
+    display: none !important;
+    $stroke: #7DB0D5;
+    $stroke-success: #009900;
+    
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 40px;
+
+    &-path{
+        stroke: $stroke;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 0;
+        @include animation-name(load, spin);
+        @include animation-duration(3s, 3s);
+        @include animation-timing-function(linear);
+        @include animation-iteration-count(infinite);
+        @include transform-origin(50% 50%);
+
+        &-complete{
+            @include animation-play-state(paused);
+        }
+    }
+
+    &-check 
+    {
+        stroke: $stroke;
+        stroke-dasharray: 110;
+        stroke-dashoffset: -110;
+        stroke-width: 0;
+
+        &-complete 
+        {   
+            @include animation(check 1s ease-in forwards);
+            stroke-width: 15;
+            stroke-dashoffset: 0;
+        }
+    }
+
+    &-fill 
+    {
+        stroke: $stroke;
+        @include animation(spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards);
+        @include transform-origin(50% 50%);
+        stroke-dasharray: 285;
+        stroke-dashoffset: -257;
+
+        &-complete 
+        {
+            @include animation(fill 1s ease-out forwards);
+        }
+
+    }
+
+    &-success 
+    {
+        stroke: $stroke-success;
+        @include transition(stroke .6s);
+    }
+}
+
+@include keyframes(load){
+    0% {
+        stroke-dashoffset: 285;
+        @include animation-timing-function(cubic-bezier(0.550, 0.055, 0.675, 0.190));
+    }
+    50% {
+        stroke-dashoffset: 0;
+        @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+    100% {
+        stroke-dashoffset: -285;
+    }
+}
+
+@include keyframes(check){
+    0% {
+        stroke-dashoffset: -110;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@include keyframes(spin){
+    0% {
+        @include transform(rotate(0deg));
+    }
+    100% {
+        @include transform(rotate(360deg));
+    }
+}
+
+@include keyframes(spin-fill){
+    0% {
+        @include transform(rotate(0deg));
+    }
+    100% {
+        @include transform(rotate(720deg));
+    }
+}
+
+@include keyframes(fill){
+    0% {
+        stroke-dashoffset: 285;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}

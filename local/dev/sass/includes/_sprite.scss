@@ -1,0 +1,38 @@
+$sprite: sprite-map("sprite/*.png", $spacing: 60px);
+%sprite{
+    background-image: $sprite;
+}
+
+@each $i in sprite_names($sprite){
+    %sprite-#{$i}{
+        background-position: sprite-position($sprite, $i);
+        height: sprite-height($sprite, $i);
+        width: sprite-width($sprite, $i);
+    }
+}
+
+@mixin sprite($i) {
+    background-image: $sprite;
+    background-position: sprite-position($sprite, $i);
+    height: sprite-height($sprite, $i);
+    width: sprite-width($sprite, $i); 
+}
+
+// http://compass-style.org/reference/compass/helpers/sprites/
+@mixin get-sprite($sprite, $path: "icons/*.png", $repeat: no-repeat, $height: true, $width: true) {
+
+    $sprite-map:        sprite-map($path);
+    $sprite-image:      sprite-file($sprite-map, $sprite);
+    $sprite-url:        sprite-url($sprite-map);
+    $sprite-position:   sprite-position($sprite-map, $sprite);
+
+    background: $sprite-url $sprite-position $repeat;
+
+    @if $height == true {
+        height: image-height($sprite-image);
+    }
+
+    @if $width == true {
+        width: image-width($sprite-image);
+    }
+}

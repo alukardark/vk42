@@ -1,0 +1,760 @@
+@import 'common/vendor/_autocomplete';
+
+.form-one-click-container{
+    position: fixed;
+    z-index: 65556;
+    overflow-y: auto;
+    background-color: #191919;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    max-width: 600px;
+    padding: 145px 125px 105px 125px;
+
+    @include max-screen(xxl){
+        max-width: 600px;
+        padding: 150px 100px 100px 100px;
+    }
+
+    @include max-screen(xl){
+        max-width: 575px;
+        padding: 125px 80px 80px 80px;
+    }
+
+    @include max-screen(lg){
+        max-width: 575px;
+        padding: 100px 50px 50px 50px;
+    }
+
+    @include max-screen(md){
+        max-width: 550px;
+        padding: 75px 30px 30px 30px;
+    }
+
+    @include max-screen(sm){
+        max-width: 100%;
+        width: 100%;
+        padding: 50px 20px 20px 20px;
+    }
+
+    &--delivery-calc{
+        max-width: 900px;
+        padding: 0 !important;
+        background-color: rgb(11, 11, 11);
+    }
+
+
+    @include transform(translateX(100%));
+    @extend %trall;
+    @extend %opacity_0;
+
+    &.opened{
+        @include transform(translateX(0));
+        @extend %opacity_1;
+    }
+
+    i{
+        position: absolute;
+        content: '';
+        z-index: 2;
+        top: 30px;
+        right: 40px;
+        color: rgba(#fff, 0.7);
+        font-size: 90px;
+        cursor: pointer;
+        @extend %trall;
+
+        @include max-screen(lg){
+            font-size: 80px;
+            top: 20px;
+            right: 30px;
+        }
+
+        @include max-screen(md){
+            font-size: 70px;
+            top: 10px;
+            right: 20px;
+        }
+
+        @include max-screen(sm){
+            font-size: 50px;
+            top: 0px;
+            right: 10px;
+        }
+
+        &:hover{
+            color: #fff;
+        }
+    }
+
+
+    .form-result{
+        color: #fff;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 1.25;
+        margin: 45px 0;
+        text-align: center;
+    }
+}
+
+.form-right-wrap{
+    margin: 0 auto;
+
+    .form-note{
+        color: #fff;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 1.25;
+        margin: 45px 0;
+        text-align: center;
+    }
+
+    .form-title{
+        color: #fff;
+        font-size: 36px;
+        line-height: 1.5;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 75px;
+        text-align: center;
+    }
+
+    .form-description{
+        color: $gray-light3;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 1.25;
+        margin-bottom: 45px;
+        text-align: center;
+    }
+
+    .form-errors-text{
+        p{
+            margin: 0;
+        }
+
+        font.errortext{
+            color: $red;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+
+    .form-question-fakebox span{
+        color: #fff;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 1.25;
+        padding-left: 10px;
+    }
+}
+
+.form-right{
+    width: 300px;
+    margin: 0 auto;
+    @extend %trall;
+
+    &.loading{
+        @include opacity(0.4);
+        pointer-events: none;
+
+        .form-spinner{
+            display: block;
+        }
+    }
+}
+
+#help_akb{
+    padding-top: 80px;
+
+    .form-title{
+        font-size: 24px;
+        line-height: 1.25;
+        margin-bottom: 45px;
+    }
+}
+
+.kredit{
+    position: relative;
+    padding-bottom: 80px;
+
+    &-inner{
+        @extend %trall;
+
+        &.wait{
+            @include opacity(0.2);
+            pointer-events: none;
+        }
+    }
+
+    .form-error{
+        margin: 20px 0 0;
+        color: $red;
+        font-size: 14px;
+    }
+
+    &-wait{
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+
+        &.active{
+            display: block;
+        }
+
+        &-spinner{
+            @include spinner-rolling($size: 50px, $color: $red, $speed: 2s, $width: 5px);
+            display: block;
+        }
+
+        &-note{
+            color: $dark;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        &-content{
+            position: absolute;
+            z-index: 1;
+            @extend %cX;
+            top: 70px;
+            height: 150px;
+        }
+    }
+
+    &-footer{
+        width: 370px;
+        margin: 0 auto;
+
+        @include max-screen(lg) {
+            width: 100%;
+        }
+
+        &-note{
+            padding: 15px 40px;
+            font-size: 14px;
+            color: $dark;
+            text-align: center;
+
+            @include max-screen(lg) {
+                padding: 15px 15px;
+            }
+
+            a{
+                color: $dark;
+            }
+        }
+    }
+
+    .form-submit-kredit{
+        margin-top: 20px;
+
+        .form-submit-button{
+            @include button($preset: 'red', $height: 72px) {
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #fff;
+                width: 100%;
+            }
+        }
+    }
+}
+
+$height-input: 40px;
+.form-question{
+    position: relative;
+    height: $height-input;
+    width: 100%;
+    cursor: text;
+    @extend %trall;
+
+    &:not(.nomb){
+        margin-bottom: 35px;
+    }
+
+    &-textarea{
+        height: $height-input * 3;
+    }
+
+    &-placeholder{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: $height-input;
+        line-height: $height-input;
+        padding-left: 18px;
+        font-size: 14px;
+        color: rgba($white-dark, 0.5);
+        @extend %trall;
+        z-index: 1;
+
+        &.active{
+            top: -33px;
+
+            &--important{
+                top: -33px !important;
+            }
+        }
+    }
+
+    &-title{
+        display: block;
+        height: $height-input;
+        line-height: $height-input;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+
+    &-fakeselect{
+        $self: &;
+
+        position: relative;
+        width: 100%;
+        height: $height-input;
+        border: 1px rgba($white-dark, 0.5) solid;
+
+        &-current{
+            width: 100%;
+            height: $height-input;
+
+            span{
+                display: block;
+                height: $height-input;
+                line-height: $height-input;
+                padding-left: 18px;
+                font-size: 14px;
+                color: #fff;
+            }
+
+            i{
+                position: absolute;
+                @extend %cY;
+                right: 15px;
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+
+        &-variants {
+            z-index: -1;
+            display: block;
+            list-style: none;
+            position: absolute;
+            top: -2px;
+            left: -1px;
+            right: -1px;
+            border: 1px #7c7c7c solid;
+            background-color: #fff;
+            @extend %trallf;
+            padding: 0;
+            max-height: 250px;
+            margin: 0;
+
+            @extend %opacity_0;
+            //@include box-shadow(0 2px 5px rgba(0, 0, 0, .25));
+            @include transform(translate3d(0, -100%, 0));
+
+            &-item{
+                @extend %trallf;
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 1.25;
+                padding: 8px 13px;
+                display: none;
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgba(#000, 0.1);
+                }
+            }
+        }
+
+        &.opened{
+            #{$self}-variants{
+                @extend %opacity_1;
+                @include transform(translateZ(0));
+                z-index: 2;
+
+                &-item{
+                    display: block;
+
+                    &.selected{
+                        font-weight: 600;
+                        background-color: rgba(#000, 0.05);
+                    }
+                }
+            }
+        }
+    }
+
+    &-fakebox{
+        margin-bottom: 26px;
+        white-space: nowrap;
+
+        i{
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            height: 42px;
+            width: 42px;
+            border: 1px rgb(66, 66, 66) solid;
+            @extend %trall;
+            cursor: pointer;
+            top: auto;
+            right: auto;
+            color: inherit;
+            font-size: inherit;
+            content: initial;
+            z-index: initial;
+
+            &:after{
+                position: absolute;
+                display: block;
+                content: '';
+                @extend %cXY;
+                @extend %trall;
+                @extend %sprite;
+                @extend %sprite-checkmark;
+            }
+        }
+
+        span{
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 14px;
+            color: $dark;
+            line-height: 1.25;
+            padding-left: 24px;
+            cursor: pointer;
+            white-space: initial;
+        }
+
+        &-descr{
+            font-size: 12px !important;
+            color: rgba(255, 255, 255, 0.66) !important;
+            margin-top: 5px !important;
+            padding-left: 0 !important;
+        }
+
+        &:hover {
+            i{
+                background-color: rgba(66, 66, 66, 0.3);
+
+                &:after{
+                    @include opacity(0.3);
+                }
+            }
+        }
+
+        &:not(.selected){
+            i{
+                background-color: rgba(66, 66, 66, 0);
+
+                &:after{
+                    @include opacity(0);
+                }
+            }
+        }
+
+        &.selected{
+            i{
+                background-color: rgba(66, 66, 66, 1);
+
+                &:after{
+                    @include opacity(1);
+                }
+            }
+        }
+    }
+
+    &-error{
+        display: none;
+        line-height: 1.15;
+        font-size: 12px;
+        color: $red;
+        padding: 4px 0 0;
+        text-align: right;
+
+        &-left{
+            text-align: left;
+        }
+    }
+
+    input{
+        border: 1px rgba($white-dark, 0.5) solid;
+        width: 100%;
+        height: $height-input;
+        //line-height: $height-input;
+        padding-left: 18px;
+        font-size: 14px;
+        color: #fff;
+    }
+
+    textarea{
+        border: 1px rgba($white-dark, 0.5) solid;
+        width: 100%;
+        height: $height-input * 3;
+        line-height: 1.333;
+        padding: 15px 18px;
+        font-size: 14px;
+        color: #fff;
+        resize: none
+    }
+
+    &.error{
+        margin-bottom: 45px;
+
+        .form-question-placeholder,
+        .form-question-fakeselect-current span,
+        .form-question-fakeselect-current i {
+            color: $red;
+        }
+
+        .form-question-error{
+            display: block;
+        }
+
+        input, textarea, .form-question-fakeselect{
+            border-color: $red;
+        }
+    }
+}
+
+.form-submit{
+    width: 100%;
+    margin-top: 10px;
+
+    &:not(.nomt){
+        margin-top: 50px;
+    }
+
+    &-button{
+        @include button($preset: 'red', $height: 58px) {
+            font-size: 20px;
+            text-transform: uppercase;
+            color: #fff;
+            width: 100%;
+        }
+    }
+
+    &-note{
+        margin-top: 20px;
+        font-size: 14px;
+        color: #fff;
+        width: 100%;
+        line-height: 1.25;
+    }
+}
+
+.form-spinner{
+    @include spinner-ring($size: 120px, $color: $red);
+}
+
+.datepicker--day-name{
+    color: $red !important;
+}
+
+.datepicker--cell.-selected-,
+.datepicker--cell.-selected-.-current-{
+    background: $red !important;
+}
+
+.form-astericks{
+    position: relative;
+    top: -20px;
+    font-size: 14px;
+    color: rgba(35, 35, 35, 0.471);
+    line-height: 1;
+    text-align: right;
+}
+
+.addcard-step{
+    display: none;
+    margin-bottom: 40px;
+
+    &.active{
+        display: block;
+    }
+
+    &-info{
+        font-size: 15px;
+    }
+
+    .form-error{
+        display: none;
+        margin-bottom: 50px;
+        color: red;
+        font-weight: 600;
+    }
+
+    .addcard-resend{
+        margin-top: 10px;
+
+        #resend-timer{
+            color: $red;
+            font-weight: 700;
+        }
+
+        #resend-link{
+            display: none;
+
+            &.active{
+                display: block;
+            }
+        }
+    }
+
+
+
+}
+
+
+.form-right-wrap--delivery_calc{
+    padding: 60px 160px 60px 90px;
+    background-color: rgb(25, 25, 25);
+
+    @include max-screen(lg){
+        padding: 30px 80px 30px 50px;
+    }
+
+    @include max-screen(sm){
+        padding: 30px 20px;
+    }
+
+    .form-right{
+        width: 100%;
+
+        &.loading{
+            @include opacity(0.5);
+
+            .form-spinner{
+                display: block;
+            }
+        }
+    }
+
+    .form-title{
+        font-size: 24px;
+        margin-bottom: 75px;
+        text-align: left;
+
+        @include max-screen(lg){
+            font-size: 22px;
+            margin-bottom: 50px;
+        }
+
+        @include max-screen(sm){
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+    }
+
+    .form-question{
+        width: 42%;
+        display: inline-block;
+        vertical-align: top;
+
+        &:nth-child(odd){
+            float: right;
+        }
+
+        &:nth-child(even){
+            float: left;
+        }
+
+        &:not(.nomb){
+            margin-bottom: 60px;
+        }
+
+        @include max-screen(lg){
+            width: 100%;
+            display: block;
+            float: none !important;
+            margin-bottom: 30px !important;
+
+            .form-question-fakebox-descr{
+                display: block;
+            }
+        }
+
+        @include max-screen(sm){
+            margin-bottom: 40px !important;
+        }
+    }
+
+    .form-submit-button{
+        width: auto;
+        padding: 0 54px;
+
+        @include max-screen(sm){
+            padding: 0 30px;
+            height: 40px;
+            line-height: 40px;
+            @include border-radius(36px);
+            font-size: 16px;
+        }
+    }
+}
+
+.delivery_calc-results{
+
+    &__title{
+        font-size: 22px;
+        font-weight: 400;
+        color: #fff;
+        margin-bottom: 50px;
+    }
+}
+
+.delivery-item{
+    @include display-flex(flex);
+    @include flex-direction(row);
+    @include justify-content(space-between);
+
+    &:not(:last-child){
+        margin-bottom: 30px;
+    }
+
+    &__title{
+        width: 30%;
+        margin-right: 2%;
+        text-decoration: underline;
+        color: rgba(255, 255, 255, 0.66);
+        font-weight: 300;
+    }
+
+    &__track{
+        width: 40%;
+        margin-right: 2%;
+        color: rgba(255, 255, 255, 0.66);
+        font-weight: 300;
+    }
+
+    &__price{
+        @include display-flex(flex);
+        @include justify-content(flex-end);
+        @include align-items(baseline);
+        width: 26%;
+        margin-right: 0%;
+        color: rgba(255, 255, 255, 1);
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    &__period{
+        color: rgba(255, 255, 255, 1);
+        font-weight: 400;
+        font-size: 14px;
+    }
+}

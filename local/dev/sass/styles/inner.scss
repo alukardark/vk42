@@ -1,0 +1,302 @@
+@import 'includes/base';
+
+.inner-page{
+    $paddings-inner: 150px;
+    $paddings-inner-normal: 50px;
+    $paddings-inner-modest: 20px;
+
+    .nav-top{
+        z-index: 3;
+        float: left;
+
+        &-list{
+            padding-left: $paddings-inner;
+
+            @include max-screen(xl) {
+                padding-left: $paddings-inner-normal;
+            }
+        }
+    }
+
+    .nav-sections{
+        position: relative;
+        float: left;
+        z-index: 3;
+        height: $navtop-height;
+
+        &-list{
+            padding: 0;
+            padding-left: 35px;
+            margin: 0;
+            list-style: none;
+            height: 100%;
+
+            @include max-screen(xxl) {
+                padding-left: 25px;
+            }
+
+            li{
+                height: 100%;
+                display: block;
+                float: left;
+            }
+
+            a{
+                position: relative;
+                display: block;
+                height: 100%;
+                width: 100%;
+                padding: 0 15px;
+                text-decoration: none;
+
+                &:hover span{
+                    border-bottom-color: $red;
+                }
+
+                @include max-screen(xl) {
+                    padding: 0 10px;
+                    max-width: 150px;
+                }
+            }
+
+            li.selected {
+                a span{
+                    border-bottom-color: $red;
+                }
+            }
+
+            span{
+                display: block;
+                line-height: 1.25;
+                font-size: 14px;
+                font-weight: 300;
+                letter-spacing: 0.04em;
+                text-align: center;
+                color: rgb(197, 197, 197);
+                @extend %cY;
+                @extend %link-border-hover;
+
+                @include max-screen(xl) {
+                    font-size: 13px;
+                    text-align: left;
+                    border: 0;
+                }
+            }
+        }
+    }
+
+    .nav-cart{
+        position: absolute;
+        bottom: -100px;
+        right: 0;
+        margin-right: 0;
+    }
+
+    .header-right{
+        right: $paddings-inner;
+
+        @include max-screen(xl) {
+            right: $paddings-inner-normal;
+        }
+
+        @include max-screen(md) {
+            right: $paddings-inner-modest;
+        }
+    }
+
+    .header-inner{
+        position: relative;
+        width: 100%;
+        background-color: $dark;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        @include paddings($paddings-inner);
+
+        @include max-screen(xl) {
+            @include paddings($paddings-inner-normal);
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+
+        @include max-screen(md) {
+            @include paddings($paddings-inner-modest);
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        @include max-screen(sm) {
+            padding-bottom: 20px;
+        }
+
+        &-bg{
+            position: absolute;
+            z-index: 0;
+            //content: '';
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            //background-image: url(/images/bg_inner.jpg);
+            background-repeat: no-repeat;
+            background-position: 25% 50%;
+            background-size: cover;
+        }
+
+        &-about{
+            max-width: 540px;
+
+            &-logo{
+                $size: 133px;
+
+                position: relative;                
+                float: left;
+                width: $size;
+
+                figure{
+                    img{
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+
+            &-content{
+                position: relative;                
+                padding-left: 40px;
+                overflow: hidden;
+            }
+
+            &-title{
+                color: rgb(234, 234, 234);
+                font-weight: bold;
+                margin-bottom: 12px;
+                letter-spacing: 0;
+
+                @include max-screen(sm) {
+                    margin-top: 25px;
+                }
+            }
+
+            &-descr{
+                font-size: 14px;
+                line-height: 1.25;
+                color: rgb(129, 127, 127);
+                letter-spacing: 0.04em;
+
+                @include max-screen(sm) {
+                    display: none;
+                }
+            }
+        }
+
+        &-button{
+
+            @include button($icon: key, $height: 50px, $border-color: $white-darken){
+                position: absolute;
+                right: 350px;
+                top: 40px;
+                text-transform: uppercase;
+                font-weight: 600;
+                color: $white-darken;
+            }
+        }
+
+        &-title{
+            position: relative;
+            @extend %page-title;
+        }
+
+        &-sections{
+            position: relative;
+            margin-top: 55px;
+            margin-left: 135px;
+
+            @include max-screen(xl) {
+                margin-left: 0;
+            }
+
+            ul{
+                list-style: none;
+                height: 50px;
+
+                li{
+                    display: block;
+                    float: left;
+
+                    a{
+                        position: relative;
+                        display: block;
+                        height: 50px;
+                        line-height: 50px;
+                        padding: 0 20px;
+                        background-color: $darken;
+                        font-size: 14px;
+                        color: rgb(242, 242, 242);
+                        text-decoration: none;
+                        @extend %trall;
+                    }
+
+                    &.active{
+                        a{
+                            background-color: $red;
+                            cursor: default;
+                            pointer-events: none;
+
+                            &:after{
+                                position: absolute;
+                                left: 50%;
+                                margin-left: -7.5px;
+                                content: '';
+                                bottom: -5px;
+                                height: 15px;
+                                width: 15px;
+                                background-color: $red;
+                                @include transform(rotate(45deg));
+                            }
+                        }
+                    }
+
+                    &:hover:not(.active){
+                        a{
+                            background-color: $dark;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-breadcrumbs{
+            margin-left: 135px;
+
+            @include max-screen(xl) {
+                margin-left: 0;
+            }
+
+            position: relative;
+            right: 0;
+            bottom: 0 !important;
+            margin-top: 30px;
+
+            a{
+                font-size: 14px;
+                color: $white-darken;
+                line-height: 1;
+            }
+
+            span{
+                position: relative;
+                top: 1px;
+                font-size: 14px;
+                color: $red;
+                line-height: 1;
+            }
+
+            i{
+                font-size: 14px;
+                font-style: normal;
+                color: $white-darken;
+                padding: 0 5px;
+            }
+        }
+    }
+}

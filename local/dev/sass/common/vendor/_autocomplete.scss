@@ -1,0 +1,84 @@
+.autocomplete-suggestions {
+    //border: 1px solid #999;
+    //background: #FFF;
+    z-index: 65557 !important;
+    overflow: auto;
+    min-width: 250px;
+
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    margin-top: 3px;
+}
+
+.autocomplete-no-suggestion{
+
+    .autocomplete-group{
+        padding: 6px 10px;
+        font: $main_font_weight $main_font_size $main_font_family;
+    }
+}
+
+.autocomplete-suggestion {
+    padding: 6px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+
+
+    span, a{
+        color: #000 !important;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none !important;
+        font: $main_font_weight $main_font_size $main_font_family;
+    }
+
+    &-description{
+        font-size: 13px!important;
+        font-weight: 300 !important;
+    }
+}
+
+.autocomplete-search-link{
+    margin-top: 10px;
+    padding: 0px 14px;
+    background: #f2f2f2;
+
+    height: 32px;
+    line-height: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    @extend %trall;
+
+    a{
+        color: #777 !important;
+        text-decoration: none !important;
+
+    }
+
+    &:hover{
+        background-color: #e6e6e6;
+    }
+}
+
+.autocomplete-selected {
+    background: #F0F0F0;
+}
+
+.autocomplete-group:not(:first-child) {
+    padding-top:  10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.autocomplete-group span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    padding: 3px 10px;
+
+
+}

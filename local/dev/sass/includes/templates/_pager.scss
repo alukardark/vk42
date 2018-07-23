@@ -1,0 +1,126 @@
+%button-more{
+    height: 48px;
+    margin-bottom: 50px;
+    text-align: center;
+
+    button{
+        @include button($height: 48px, $paddings: 26px, $border-radius: 0, $border-width: 0){
+            font-size: 22px;
+            background-color: rgb(233, 231, 228);
+            font-weight: 400;
+            margin: 0 auto;
+            color: #000;
+
+            &:hover{
+                color: #000;
+                background-color: darken(rgb(233, 231, 228), 15%);
+            }
+        }
+
+        @include max-screen(xl) {
+            min-width: 100%;
+        }
+    }
+
+    mark{
+        @include spinner-facebook($size: 40px, $color: rgba(#000, 0.9));
+    }
+
+    &.loading{
+        button{
+            color: transparent;
+            background-color: darken(rgb(233, 231, 228), 15%) !important;
+        }
+
+        mark{
+            display: block;
+        }
+    }
+}
+
+%pager {
+    $pag-size: 48px;
+    $pag-size-mobile: 40px;
+
+    ul{
+        height: $pag-size;
+
+        @include max-screen(md) {
+            height: $pag-size-mobile;
+        }
+
+        li{
+            display: block;
+            float: left;
+            height: 100%;
+            min-width: $pag-size;
+
+            &:not(:last-child){
+                margin-right: 7px;
+
+                @include max-screen(sm) {
+                    margin-right: 3px;
+                }
+            }
+
+            @include max-screen(md) {
+                min-width: $pag-size-mobile;
+            }
+
+            @include max-screen(sm) {
+                min-width: 27px;
+            }
+
+            > i, > span, > a{
+                display: block;
+                text-align: center;
+                padding: 0 15px;
+                width: 100%;
+                height: 100%;
+                line-height: $pag-size;
+                color: #000;
+                background-color: rgb(233, 231, 228);
+                font-size: 22px;
+                text-decoration: none;
+                @extend %trall;
+
+                @include max-screen(md) { 
+                    line-height: $pag-size-mobile;
+                    font-size: 18px;
+                    padding: 0 10px;
+                }
+
+                @include max-screen(sm) {
+                    font-size: 14px;
+                    padding: 0 5px;
+                }
+            }
+
+            &.prev, &.next{
+                > span, > i{
+                    @include opacity(0.25);
+                }
+            }
+
+            &.active{
+                span{
+                    background-color: $red;
+                    color: #fff;
+                }
+            }
+
+            &.dots{
+                span{
+                    background-color: transparent;
+                }
+            }
+
+
+            > a{
+                &:hover{
+                    background-color: darken(rgb(233, 231, 228), 15%);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+$icons: sprite-map("icons/*.png", $spacing: 5px);
+.icons {
+  background: $icons;
+}
+
+@each $i in sprite_names($icons) {
+  .icons-#{$i} {
+    background-position: sprite-position($icons, $i);
+    height: sprite-height($icons, $i);
+    width: sprite-width($icons, $i);
+  }
+}

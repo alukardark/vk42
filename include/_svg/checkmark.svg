@@ -1,0 +1,7 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px" viewBox="0, 0, 100, 100">
+<g transform="">
+    <circle class="checkmark-path" fill="none" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44" />
+    <circle class="checkmark-fill" fill="none" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44" />
+    <polyline class="checkmark-check" fill="none" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" points="70,35 45,65 30,52" />
+</g>
+</svg>

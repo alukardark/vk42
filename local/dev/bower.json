@@ -1,0 +1,25 @@
+{
+  "name": "axioma-leon",
+  "version": "1.0.0",
+  "main": "",
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "3.3.7",
+    "jquery.maskedinput": "^1.4.1",
+    "jquery-mask-plugin": "^1.14.12",
+    "slick.js": "^1.6.0",
+    "font-awesome": "4",
+    "magnific-popup": "1.1.0",
+    "jquery-placeholder": "2",
+    "ionicons": "2.0.1",
+    "scrollbox": "3.0.1",
+    "ionrangeslider": "2.1.5",
+    "history.js": "1.8.0",
+    "fancybox": ">=3",
+    "air-datepicker": "2",
+    "devbridge-autocomplete": "^1.4.7",
+    "inputmask": "^3.3.11"
+  },
+  "devDependencies": {},
+  "overrides": {}
+}

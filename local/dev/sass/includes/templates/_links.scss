@@ -1,0 +1,10 @@
+%link-border-hover{
+    position: relative;
+    border: 2px transparent solid;
+    text-decoration: none;
+    @extend %trall;
+    
+    &:hover{
+        border-bottom-color: $red;
+    }
+}

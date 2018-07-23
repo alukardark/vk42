@@ -1,0 +1,136 @@
+$grid-padding: 0px;
+$grid-margin: 0px;
+
+@function width-by-index($i){
+    @if ($i == 0) {
+        @return auto;
+    } @else {
+        @return percentage($i / $columns);
+    }
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    @if ($grid-padding > 0) {
+        padding-left: $grid-padding;
+        padding-right: $grid-padding;
+    }
+}
+
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@each $code, $width in $breakpoints {
+    @include max-screen($code) {
+        @if ($width > 0){
+            .container {
+                width: $width;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    @if ($grid-padding > 0) {
+        padding-left: $grid-padding;
+        padding-right: $grid-padding;
+    }
+}
+
+.container-fluid::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@if ($grid-margin > 0) {
+    @each $code, $width in $breakpoints {
+        @include max-screen($code) {
+            .row {
+                margin-right: -$grid-margin;
+                margin-left: -$grid-margin;
+            }
+        }
+    }
+}
+
+//collect grig cols classes
+@if ($grid-padding > 0) {
+    $cols-classes: '';
+    @each $code, $width in $breakpoints {
+        $cols-classes: $cols-classes + '.col-' + $code + ', ';
+
+        @for $i from 0 through $columns {
+            $cols-classes: $cols-classes + '.col-' + $code + '-' + $i + ', ';
+        }
+    }
+
+    #{$cols-classes} {
+        padding-right: $grid-padding;
+        padding-left: $grid-padding;
+    }
+
+    @each $code, $width in $breakpoints {
+        @include min-screen($code) {
+            #{$cols-classes} {
+                padding-right: $grid-padding;
+                padding-left: $grid-padding;
+            }
+        }
+    }
+}
+
+
+@for $i from 0 through $columns {
+    .col-#{$i}     {float: left; width: width-by-index($i);}
+    .offset-#{$i}  {margin-left: percentage($i / $columns);}
+    //.pull-#{$i}    {right: $width;}
+    //.push-#{$i}    {left: $width;}
+}
+
+//.text-left {text-align: left !important;}
+//.text-right {text-align: right !important;}
+//.text-center {text-align: center !important;}
+//.hidden-up {display: none !important;}
+
+.float-left     {float: left  !important;}
+.float-right    {float: right !important;}
+.float-none     {float: none  !important;}
+
+@each $code, $width in $breakpoints {
+    @include max-screen($code) {
+        @for $i from 0 through $columns {
+            .col-#{$code}-#{$i}     {float: left;width: width-by-index($i);}
+            .offset-#{$code}-#{$i}  {margin-left: percentage($i / $columns);}
+            //.float-right-#{$code}   {float: right !important;}
+            //.float-left-#{$code}   {float: left !important;}
+            //.pull-#{$code}-#{$i}    {right: $width;}
+            //.push-#{$code}-#{$i}    {left: $width;}
+        }
+
+        .float-#{$code}-left    {float: left  !important;}
+        .float-#{$code}-right   {float: right !important;}
+        .float-#{$code}-none    {float: none  !important;}
+        //.text-#{$code}-left {text-align: left !important;}
+        //.text-#{$code}-right {text-align: right !important;}
+        //.text-#{$code}-center {text-align: center !important;}
+        .hidden-#{$code}-down   {display: none !important;}
+    }
+
+    @include min-screen($code) {
+        .hidden-#{$code}-up {display: none !important;}
+    }
+}

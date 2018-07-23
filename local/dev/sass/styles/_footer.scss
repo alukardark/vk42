@@ -1,0 +1,291 @@
+.footer{
+    background-color: $dark;
+    padding-top: 60px;
+
+    @include max-screen(lg) {
+        padding-top: 0;
+    }
+}
+
+.footer-content{
+    padding-bottom: 80px;
+    
+    @include max-screen(lg) {
+        padding-bottom: 50px;
+    }
+}
+
+.nav-bottom{
+    padding-bottom: 45px;
+    border-bottom: 1px rgba(#fff, 0.05) solid;
+
+    @include max-screen(xl) {
+        @include paddings;
+    }
+
+    ul{
+        list-style: none;
+    }
+
+    .root-list{
+
+    }
+
+    .root-item {
+        float: left;
+        width: 20%;
+
+        > a, > span{
+            color: $red;
+            line-height: 1;
+            white-space: nowrap;
+            text-decoration: none;
+
+            @include max-screen(xxl){
+                font-size: 15px;
+            }
+        }
+    }
+
+    .children-list {
+        padding-top: 30px;
+        padding-right: 70px;
+
+        @include max-screen(xxl){
+            padding-right: 30px;
+        }
+    }
+
+    .children-item {
+        &:not(:last-child){
+            margin-bottom: 15px;
+        }
+
+        > a, > span{
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(153, 153, 153, 0.6);
+            line-height: 1.5;
+            text-decoration: none;
+            @extend %trall;
+        }
+
+        > a:hover{
+            color: rgb(177, 177, 177);
+        }
+
+        &.selected > a{
+            color: rgb(199, 199, 199);
+        }
+    }
+}
+
+.footer-contacts{
+    padding-top: 40px;
+
+    @include max-screen(xl) {
+        @include paddings;
+    }
+
+    @include max-screen(lg) {
+        padding-top: 50px;
+    }
+
+    &-socnets{
+        float: left;
+        width: 60%;
+
+        @include max-screen(xl) {
+            width: 50%;
+        }
+    }
+
+    &-phone{
+        float: left;
+        width: 40%;
+
+        @include max-screen(xl) {
+            width: 50%;
+        }
+
+        @include max-screen(md) {
+            width: 100%;
+        }
+
+        @include max-screen(sm) {
+            text-align: center;
+        }
+
+        &-title{
+            font-size: 14px;
+            color: rgba(180, 180, 180, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1;
+            padding-bottom: 10px;
+            padding-right: 30px;
+
+            @include max-screen(lg) {
+                font-size: 13px;
+                letter-spacing: 0.04em;
+                padding-right: 10px;
+            }
+
+            @include max-screen(sm) {
+                padding-right: 0;
+            }
+        }
+
+        &-descr{
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(180, 180, 180, 0.5);
+            letter-spacing: 0.06em;
+            padding-right: 30px;
+
+            @include max-screen(lg){
+                font-size: 13px;
+                letter-spacing: 0.04em;
+            }
+
+            @include max-screen(sm) {
+                padding-right: 0;
+            }
+        }
+
+        &-number{
+            font-size: 22px;
+            color: rgb(255, 255, 255);
+            font-weight: 700;
+            line-height: 1;
+            margin-top: 50px;
+            text-align: right;
+
+            @include max-screen(lg){
+                font-size: 18px;
+            }
+
+            @include max-screen(sm) {
+                text-align: inherit;
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+.socnets-list{
+    $size: 25px;
+    $size-lg: 20px;
+
+    list-style: none;
+    margin-top: 50px;
+
+    li{
+        display: block;
+        float: left;
+
+        &:not(:last-child){
+            margin-right: 23px;
+
+            @include max-screen(lg){
+                margin-right: 17px;
+            }
+        }
+    }
+
+    &-title{
+        height: $size;
+        line-height: $size;
+        color: rgba(153, 153, 153, 0.4);
+        letter-spacing: 0.06em;
+        text-transform: lowercase;
+
+        @include max-screen(lg){
+            height: $size-lg;
+            line-height: $size-lg;
+        }
+    }
+
+    &-item{
+        width: $size;
+        height: $size;
+
+        @include max-screen(lg){
+            width: $size-lg;
+            height: $size-lg;
+        }
+
+        a{
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            svg{
+                position: absolute;
+                @extend %cXY;
+
+                @include max-screen(lg){
+                    width: $size-lg;
+                    height: $size-lg;
+                }
+            }
+        }
+    }
+}
+
+.footer-copyright{
+    $height: 100px;
+    height: $height;
+
+    @include max-screen(xl) {
+        @include paddings;
+    }
+
+    &-vk{
+        a{
+            display: block;
+            height: $height;
+            line-height: $height;
+            font-size: 14px;
+            color: rgba(153, 153, 153, 0.3);
+            text-decoration: none;
+            @extend %trall;
+
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+
+    &-axioma{
+        a{
+            display: block;
+            height: $height;
+            line-height: $height;
+            font-size: 14px;
+            color: rgba(153, 153, 153, 0.3);
+            text-decoration: none;
+            @extend %trall;
+
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+}
+
+.footer-disclaimer{
+    padding-top: 20px;
+
+    @include max-screen(xl) {
+        padding: 20px;
+        padding-bottom: 0;
+    }
+
+    &-content{
+        font-size: 13px;
+        font-weight: 300;
+        color: rgba(180,180,180,0.5);
+    }
+}

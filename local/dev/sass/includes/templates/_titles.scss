@@ -1,0 +1,73 @@
+%index-title{
+    text-align: left;
+    font-size: 82px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+
+    @include max-screen(xxl) {
+        font-size: 64px;
+        letter-spacing: 0.06em;
+    }
+
+    @include max-screen(xl) {
+        font-size: 54px;
+        letter-spacing: 0.04em;
+    }
+
+    @include max-screen(lg) {
+        font-size: 42px;
+        letter-spacing: 0.02em;
+    }
+
+    @include max-screen(md) {
+        font-size: 36px;
+        letter-spacing: 0;
+    }
+
+    @include max-screen(sm) {
+        font-size: 28px;
+    }
+}
+
+%page-title{
+    text-align: left;
+    //font-size: 70px;
+    font-size: 50px;
+    font-weight: 600;
+    letter-spacing: 0em;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    line-height: 1;
+    //margin: 100px 0 0 135px;
+    margin: 50px 0 0 135px;
+
+    @include max-screen(xxl) {
+        font-size: 46px;
+        margin: 46px 0 0 120px;
+    }
+
+    @include max-screen(xl) {
+        font-size: 42px;
+        margin: 42px 0 0 0;
+    }
+
+    @include max-screen(lg) {
+        font-size: 38px;
+        margin: 38px 0 0 0;
+        line-height: 1.2;
+    }
+
+    @include max-screen(md) {
+        font-size: 32px;
+        margin: 32px 0 0 0;
+    }
+
+    @include max-screen(sm) {
+        font-size: 26px;
+        margin: 26px 0 0 0;
+    }
+}

@@ -1,0 +1,14 @@
+<svg width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <rect fill="none" height="28" width="28"/>
+ </g>
+ <g>
+  <ellipse ry="6.421144" rx="6.421144" cy="12.65261" cx="12.965832" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+  <ellipse ry="12.176688" rx="12.176688" cy="12.926684" cx="12.926686" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+  <path d="m13.122467,6.309769c-0.078339,0 -0.000031,12.686646 -0.000031,12.685684" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+  <path d="m6.701294,12.809219l12.685699,-0.078293" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+  <path d="m17.351013,17.351013" opacity="0.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+  <path transform="rotate(94.5114, 13.3574, 8.42432)" d="m13.357361,3.960587c0,0 8.926971,9.005264 8.926971,8.926956" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+  <path d="m8.50235,8.345749c0,0 8.926971,9.005264 8.926971,8.926956" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+ </g>
+</svg>

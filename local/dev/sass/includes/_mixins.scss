@@ -1,0 +1,177 @@
+%full_col{
+    width: 100%;
+}
+
+%center_col{
+    width: 100%;
+}
+
+@mixin nopaddings {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+@mixin paddings($size: $paddings, $important: false) {
+    @if map-has-key($paddings-ctrl, $size) {
+        $size: map-get($paddings-ctrl, $size);
+    }
+    @if ($important == true) {
+        padding-right: $size !important;
+        padding-left: $size !important;
+    } 
+    @else {
+        padding-right: $size;
+        padding-left: $size;
+    }    
+}
+
+.paddings{
+    @include paddings(big);
+
+    @include max-screen(xl){
+        @include paddings(medium);
+    }
+
+    @include max-screen(sm){
+        @include paddings(small);
+    }
+}
+
+.section{
+    width: 100%;
+    max-width: 1150px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include max-screen(xl){
+        width: calc(100% - 50px * 2);
+    }
+
+    @include max-screen(sm){
+        width: calc(100% - 20px * 2);
+    }
+}
+
+%trall {
+    @include transition(all $medium ease-out);
+}
+
+%tralls {
+    @include transition(all $slow ease-out);
+}
+
+%trallf {
+    @include transition(all $fast ease-out);
+}
+
+%notransition {
+    @include transition(none !important);
+}
+
+@mixin notransition{
+    @include transition(none !important);
+}
+
+%opacity_1 {
+    @include opacity(1);
+    visibility: visible;
+}
+
+%opacity_0 {
+    @include opacity(0);
+    visibility: hidden;
+}
+
+@mixin set_opacity($opacity){
+    @include opacity($opacity);
+    @if ($opacity > 0){
+        visibility: visible;
+    } @else {
+        visibility: hidden;
+    }    
+}
+
+%cY {
+    top: 50%;
+    @include transform(translateY(-50%));
+}
+
+%cX {
+    left: 50%;
+    @include transform(translateX(-50%));
+}
+
+%cXY {
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+}
+
+@mixin center{
+    left: 50%;
+    top: 50%;
+    @include transform(translate(-50%, -50%));
+}
+@mixin centerX{
+    left: 50%;
+    @include transform(translateX(-50%));
+}
+@mixin centerY{
+    top: 50%;
+    @include transform(translateY(-50%));
+}
+@mixin cancelCenter{
+    top: auto !important;
+    left: auto !important;
+    @include transform(none !important);
+}
+
+@mixin touch-action ($action) {
+    -ms-touch-action: $action;
+    touch-action: $action;
+}
+
+%pseudo{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+@mixin forms-placeholder($color, $transition_duration:$medium) {
+    @include input-placeholder {
+        color: $color;
+        @include opacity(1);
+        @include transition(opacity $transition_duration);
+    }
+
+    @if ($transition_duration != false){
+        &:focus {
+            @include input-placeholder {
+                @include opacity(0);
+            }
+        }
+    }
+}
+
+
+@mixin text-size-adjust($value: none) {
+    -webkit-text-size-adjust: $value;
+    -moz-text-size-adjust: $value;
+    -ms-text-size-adjust: $value;
+    text-size-adjust: $value;
+}
+
+@mixin font-smoothing($value: antialiased) {
+    @if $value == antialiased {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    @else {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}
